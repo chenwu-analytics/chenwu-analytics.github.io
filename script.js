@@ -66,4 +66,18 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach(element => {
         fadeObserver.observe(element);
     });
-});
+    const contactBtn = document.querySelector('.contact-btn');
+    const contactDropdown = document.querySelector('.contact-dropdown');
+    
+    if (contactBtn && contactDropdown) {
+        contactBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            contactDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.contact-wrapper')) {
+                contactDropdown.classList.remove('active');
+            }
+        });
+    }});
