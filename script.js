@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Expandable Project Details Logic
     const expandBtns = document.querySelectorAll('.expand-btn');
+    const gridContainer = document.querySelector('.grid-container');
+    
     expandBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const card = btn.closest('.project-card');
@@ -32,15 +34,28 @@ document.addEventListener('DOMContentLoaded', () => {
             details.classList.toggle('active');
             btn.classList.toggle('active');
             
-            // Update button text
+            // Update button text contextually
+            const isDigitalAsset = card.querySelector('h4').textContent.includes("Digital Asset");
+            const openText = isDigitalAsset ? 'View Framework Structure' : 'Read Deep Dive';
+            
             if (details.classList.contains('active')) {
-                btn.innerHTML = 'Close Deep Dive <i data-lucide="chevron-up"></i>';
+                btn.innerHTML = `Close ${isDigitalAsset ? 'Framework' : 'Deep Dive'} <i data-lucide="chevron-up"></i>`;
             } else {
-                btn.innerHTML = 'Read Deep Dive <i data-lucide="chevron-down"></i>';
+                btn.innerHTML = `${openText} <i data-lucide="chevron-down"></i>`;
             }
             
             // Re-render icons for the new HTML
             lucide.createIcons();
+
+            // Toggle grid-container alignment
+            const anyActive = Array.from(document.querySelectorAll('.project-details')).some(d => d.classList.contains('active'));
+            if (gridContainer) {
+                if (anyActive) {
+                    gridContainer.classList.add('has-expanded');
+                } else {
+                    gridContainer.classList.remove('has-expanded');
+                }
+            }
         });
     });
 
