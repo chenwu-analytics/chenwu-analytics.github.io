@@ -532,3 +532,21 @@ p {
         padding-left: 1.5rem;
     }
 }
+/* Contact Dropdown Styles */
+.contact-dropdown {
+    position: absolute;
+    top: 130%;
+    right: 0;
+    background: var(--bg-secondary);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    display: none;
+    min-width: 240px;
+    z-index: 1001;
+    animation: fadeIn 0.2s ease-out;
+}
+.contact-dropdown.active {
+    display: block;
+}
