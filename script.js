@@ -66,6 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach(element => {
         fadeObserver.observe(element);
     });
+
+    // Contact Me Dropdown Logic
     const contactBtn = document.querySelector('.contact-btn');
     const contactDropdown = document.querySelector('.contact-dropdown');
     
@@ -75,9 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
             contactDropdown.classList.toggle('active');
         });
 
+        // 点击网页其他地方，弹窗自动收起
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.contact-wrapper')) {
                 contactDropdown.classList.remove('active');
             }
         });
-    }});
+    }
+});
