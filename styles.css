@@ -251,6 +251,10 @@ p {
     align-items: start;
 }
 
+.grid-container.has-expanded .project-card {
+    height: auto;
+}
+
 /* Portfolio Cards */
 .project-card {
     display: flex;
